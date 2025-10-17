@@ -1,0 +1,51 @@
+<!DOCTYPE HTML> 
+    <html>
+        <head>
+            <title> ASCII Art</title>
+        </head>
+
+        
+        <body>
+            
+
+            <h1 id="myTitle"></h1>
+            <script>
+                var squareSize = Number(prompt("Enter a square size between 3 and 30."))
+                if ((squareSize >=3) && (squareSize < 30)) {
+                    document.write("Great choice! Let's build it. </br> </br>");
+
+                    for (row = 0; row < squareSize ;row++) {
+                        document.write("*");
+                        for (col = 0; col< squareSize ;col++) {
+                            // my columns are off by 1 unless i increase the base value to 1...why?
+                            document.write("*");
+                        }
+                            document.write("</br>");
+                    }
+
+                } else {
+                    while ((squareSize <= 2) || (squareSize >= 31)) {
+                     alert("Error! Please enter in a number between 3 and 30.");
+                     var squareSize = Number(prompt("Enter a square size between 3 and 30."));
+                    }
+                }
+            //Ask the user to enter a square size between 3 and 30.
+                // var squareSize = prompt("Enter a square size between 3 and 30.")
+            //Continuously prompt the user to enter a number within the specified range if they input a number outside of the acceptable range.
+                    // continuously prompt... = while loop? 
+                   
+            //Don't worry about non-numeric input, assume the user will type a number.
+            //Using prompt() to get user input.
+            //Draw a square of the specified size.  For example, if a size of 5 is requested, you'd draw this:
+            //*****
+            //*****
+            //*****
+            //*****
+            //*****
+
+        
+
+            document.getElementById("myTitle").textContent ="ASCII Art Assignment";
+            </script>
+        </body>
+    </html>
