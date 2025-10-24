@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Grocery List</title>
+  </head>
+  <body>
+    <h2>Grocery List</h2>
+    Enter grocery items separated by commas.
+    <br>
+    <textarea id="groceryInput" placeholder='Enter grocery items and seperate with comma ","when finished.'></textarea>
+    <br>
+    <button onclick="createGroceryList()">Create Grocery List</button>
+    <p id="groceryList"></p>
+    <p>Total items: <span id="totalItems"></span></p>
+
+  <script>
+    function createGroceryList() {
+    //Check for empty input from user
+
+        var userInput = document.getElementById("groceryInput").value;
+
+        if (userInput == "") {
+            alert("Please enter in your grocery list to proceed.")
+        } else {alert("Nice grocery list!")
+           
+        };
+  // Split input string into array
+         var groceryItems = userInput.split(",");
+            // groceryItems.sort();
+            
+    // Trim white space from each items by looping through array
+        for (i = 0; i< groceryItems.length; i++){
+           groceryItems[i] = groceryItems[i].trim();  
+          
+        };
+
+
+        groceryItems.sort();
+        document.getElementById("groceryList").innerHTML = "<br>" + groceryItems;
+        document.getElementById("totalItems").innerHTML = groceryItems.length; 
+
+    // Sort groceryItems alphabetically
+    // sort()
+    // Display grocery list to webpage
+    // innerHTML
+    // to make it pretty, can use for loop and add <br> after each items
+    // to get the item length could also use .length
+    //html makes everything pretty
+    };
+
+  </script>
+  </body>
