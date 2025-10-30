@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Grocery List</title>
+  </head>
+  <body style ="background-color:beige";>
+    <h2>Grocery List</h2>
+    Enter grocery items separated by commas.
+    <style>
+        img {
+            height: 50%;
+            width: 50%;
+        }
+    </style>
+    <br>
+    <br>
+    <img src="https://www.heinens.com/content/uploads/2019/11/Helathy-grocery-Haul.jpg" alt ="grocery paper bag with vegetables and fruit spilling out onto a gray background">
+    <br>
+    <br>
+    <textarea id="groceryInput" placeholder='Enter grocery items and seperate with comma ","when finished.'></textarea>
+    <br>
+    <button onclick="createGroceryList()">Create Grocery List</button>
+    <p id="groceryList"></p>
+    <p>Total items: <span id="totalItems"></span></p>
+
+  <script>
+    function createGroceryList() {
+
+        var userInput = document.getElementById("groceryInput").value;
+
+        if (userInput == "") {
+            alert("Please enter in your grocery list to proceed.")
+        } else {alert("Nice grocery list!")
+           
+        };
+
+         var groceryItems = userInput.split(",");
+        
+
+        for (i = 0; i< groceryItems.length; i++){
+           groceryItems[i] = groceryItems[i].trim();  
+          
+        };
+
+      
+
+        groceryItems.sort();
+        document.getElementById("groceryList").innerHTML = "<br>" + groceryItems;
+        document.getElementById("totalItems").innerHTML = groceryItems.length; 
+
+    // Sort groceryItems alphabetically
+    // sort()
+    // Display grocery list to webpage
+    // innerHTML
+    // to make it pretty, can use for loop and add <br> after each items
+    // to get the item length could also use .length
+    //html makes everything pretty
+    };
+
+  </script>
+  </body>

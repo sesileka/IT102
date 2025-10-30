@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Let's Make a Deal</title>
+    </head>
+    <body style="background-color: blueviolet;">
+        <img src="https://upload.wikimedia.org/wikipedia/en/c/cf/LMADlogo2011.jpg" alt ="blue banner with the words lets make a deal written on it">
+        <style>
+            img { width: 25%; 
+            }
+        </style>
+
+        <h1>Let's Make a Deal</h1>
+        <hr>
+        <p>Choose a door:</p>
+        <select id="doorSelection">
+            <option value="0">Select a Door</option>
+            <option value="1">Door #1</option>
+            <option value="2">Door #2</option>
+            <option value="3">Door #3</option>
+        </select>
+        <button onclick="doorPrize()">Select</button>
+
+        <p id="prize">Good Luck!</p>
+
+        <script>
+            function doorPrize() {
+
+                var firstPrize = {
+                    prize: "Your prize is a custom built PC!"
+                };
+
+                var secondPrize = {
+                    prize: "You have won a laptop we found in the dumpster outside! Sorry about the smell."
+                };
+
+                var thirdPrize = {
+                    prize: "You won an all expenses paid trip to microCenter and a microCenter giftcard for two thousand dollars! Happy shopping!"
+                };
+                
+                var userChoice = document.getElementById("doorSelection").value;
+                
+                if (userChoice == "1"){
+                    firstPrize.prize;
+                     document.getElementById("prize").innerHTML = firstPrize.prize;
+                } else if (userChoice == "2") {
+                    secondPrize.prize;
+                    document.getElementById("prize").innerHTML = secondPrize.prize;
+                } else {
+                    thirdPrize.prize;
+                    document.getElementById("prize").innerHTML = thirdPrize.prize;
+                    }
+                } 
+                
+            
+        </script>
+    </body>
+</html>
