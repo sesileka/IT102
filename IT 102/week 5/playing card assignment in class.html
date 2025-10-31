@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+    <title> Playing Card Object Assignment</title>
+    </head>
+    <body>
+        <h1> Playing Cards</h1>
+
+        <p id = "card 1"> Card 1</p>
+        <p id="card 2"> Card 2</p>
+<script>
+
+    function Card(suit,rank){
+
+        //create the suit property and assign it the value from the parameter.
+        this.suit = suit;
+        //create the rank property and assign it the value from the parameter.
+        this.rank = rank;
+        //create the isVisible property and assign boolean false to it.
+        this.isVisible = false;
+        //create the show() method.  This method assigns the boolean true to this.isVisible.
+        this.show = function() {
+            this.isVisible = true; 
+        };
+        //create the hide() method.  This method assigns the boolean false to this.isVisible.
+        this.hide = function() {
+            this.isVisible = false;
+        };
+
+    } 
+
+    var card1 = new Card("hearts",9);
+    var card2 = new Card("spades", 10);
+
+    
+    alert(card1.rank + " of " + card1.suit);
+    alert(card1.isVisible);
+    card1.show();
+    alert(card1.isVisible);
+
+    document.getElementById("card 1").innerHTML = card1.rank + " of " + card1.suit;
+
+</script>
+    </body>
+</html>
