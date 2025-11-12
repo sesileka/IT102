@@ -1,0 +1,96 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+    <title> Playing Card Object Assignment</title>
+    </head>
+    <body style="background-color:darkgreen;">
+        <h1 style = "color:white;"> Playing Cards Assignment </h1> 
+            <section>
+                <style> 
+                    img{
+                        width: 15%;
+                        height: 15%;
+                    }
+                </style>
+                <img src = "https://oyster.ignimgs.com/mediawiki/apis.ign.com/balatro/4/49/Balatro-red_deck.png" alt: Blank Card  id = "card1Img">
+                    <br>
+                <button type ="showCard1" onclick="card1Visible(card1)"> Reveal Card 1 </button>
+                <button type ="hideCard1" onclick="card1Hide(card1)"> Hide Card 1 </button>
+                <p id = "card 1" style = "color:white;"> Card 1 </p>
+             </section>
+
+        <br> 
+             <section>
+                <style>
+                    img {
+                        width: 15%;
+                        height: 15%;
+                    }
+                </style>
+                <img src = "https://oyster.ignimgs.com/mediawiki/apis.ign.com/balatro/4/49/Balatro-red_deck.png" alt: Blank Card id = "card2Img">
+                    <br>
+                <button type ="showCard2" onclick="card2Visible(card2)"> Reveal Card 2 </button>
+                <button type ="hideCard2" onclick="card2Hide(card2)"> Hide Card 2 </button>
+                <p id = "card 2" style = "color:white;" > Card 2 </p>
+            </section>
+<script>
+
+    function test() {
+        document.getElementById("card 1").innerHTML = "Test."
+    }
+
+    function Card(suit,rank){
+
+        this.suit = suit;
+        this.rank = rank;
+        this.isVisible = false;
+        this.show = function() {
+            this.isVisible = true; 
+        };
+        this.hide = function() {
+            this.isVisible = false;
+        };
+
+    } 
+
+    var card1 = new Card("Hearts", 4);
+    var card2 = new Card("Spades", 8);
+
+    function card1Visible (card1,Card) {
+        card1.show();
+        document.getElementById("card1Img").src = "https://static.wikia.nocookie.net/balatrogame/images/9/9a/4_of_Hearts.png/revision/latest?cb=20240517195511";
+        document.getElementById("card 1").innerHTML = card1.rank + " of " + card1.suit + "" + "<br>" + "Is the card visible? " + card1.isVisible;
+
+    }
+
+    function card1Hide(card1,Card) {
+        card1.hide();
+        document.getElementById("card1Img").src = "https://oyster.ignimgs.com/mediawiki/apis.ign.com/balatro/4/49/Balatro-red_deck.png";
+        document.getElementById("card 1").innerHTML = "Is the card visible? " + card1.isVisible;
+    }
+
+    function card2Visible (card2,Card) {
+        card2.show();
+        document.getElementById("card2Img").src = "https://static.wikia.nocookie.net/balatrogame/images/6/67/8_of_Spades.png/revision/latest?cb=20240517195511";
+        document.getElementById("card 2").innerHTML = card2.rank + " of " + card2.suit + "" + "<br>" + "Is the card visible?" + card2.isVisible;
+
+    }
+
+    function card2Hide(card2,Card) {
+        card2.hide();
+        document.getElementById("card2Img").src = "https://oyster.ignimgs.com/mediawiki/apis.ign.com/balatro/4/49/Balatro-red_deck.png";
+        document.getElementById("card 2").innerHTML = "Is the card visible? " + card2.isVisible;
+
+    }
+    
+    
+
+    console.log(card1.isVisible);
+    console.log(card2.isVisible);
+    
+
+</script>
+
+    </body>
+
+</html>
