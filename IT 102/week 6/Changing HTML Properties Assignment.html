@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <table id = "myTable" style="border: 10px solid red; font-size: 20px; font-weight: bold">
+      <tr id = "row1" style = "color: blue" >
+        <td id = "1.1" style = "border: 2px solid black">Row 1 Col 1</td>
+        <td id = "1.2" style = "border: 2px solid black">Row 1 Col 2</td>
+      </tr>
+    </table>
+    <img src = "" id = "addImage">
+    <br><br>
+    <button type="submit" onclick = "changeTextColor()">Change Text Color </button>
+    <br><br>
+    <!--Add 2nd Button-->
+    <button type ="submit" onclick="changeFontSize()"> Change Font Size </button>
+    <br><br>
+    <button type="submit" onclick="changeBorderThickness()"> Change Border Thickness </button>
+    <!--Add 3rd Button-->
+    <br><br>
+    <button type="submit" onclick="changeBorderColor()"> Change Border Color </button>
+    <!--Add 4th Button--> 
+    <br><br>
+    <button type ="submit" onclick="addPhoto()"> Add a Photo </button> 
+
+    <script>
+     function changeTextColor(){
+       var textcolor = document.getElementById("row1").style.color;
+       if (textcolor== "green"){
+         textcolor = "blue";
+       }else{
+         textcolor = "green";
+       }
+       document.getElementById("row1").style.color = textcolor;
+     }
+
+     function changeFontSize() {
+        var fontSize = document.getElementById("myTable").style.fontSize;
+        if (fontSize == "60px") {
+            fontSize = "20px";
+        } else if (fontSize == "20px") {
+            fontSize = "40px";
+        } else {
+            fontSize = "60px";
+        }
+        document.getElementById("myTable").style.fontSize = fontSize;
+     }
+
+     function changeBorderThickness() {
+      var borderThickness = document.getElementById("myTable").style.borderWidth;
+      if (borderThickness == "6px") {
+        borderThickness = "2px";
+      } else {
+        borderThickness = "6px";
+      } 
+      document.getElementById("myTable").style.borderWidth = borderThickness;
+     }
+
+     function changeBorderColor() {
+        var borderColor = document.getElementById("myTable").style.borderColor;
+        if (borderColor == "red") {
+            borderColor = "black";
+        } else if (borderColor == "black"){
+            borderColor = "purple";
+        } else {
+            borderColor = "red";
+        }
+        document.getElementById("myTable").style.borderColor = borderColor;
+     }
+
+     function addPhoto() {
+       var userInput = prompt("Please link the image address of the photo you would like to add!");
+        document.getElementById("addImage").src = userInput;
+     }
+    </script>
+  </body>
+</html>
