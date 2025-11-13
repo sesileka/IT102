@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+    <html>
+        <header>
+            <title> Blackjack Game </title>
+        </header>   
+        
+        <h1> Blackjack </h1>
+
+        
+        <body>
+            <script>
+                 //initialize all variables
+      var card = 0;
+      var total = 0;
+      var hitMe = true;
+      var dealer = 0;
+
+
+// constructor card object
+      function Card(suit,rank) {
+        this.suite = suit;
+        this.rank = rank;
+        this.isVisible = false;
+        this.show = function() {
+            this.isVisible = true;
+        };
+        this.hide = function() {
+            this.isVisible = false;
+        };
+      }
+// deck of cards
+
+      var deck = [];
+
+     
+        //for (rank = 1; rank <= 13; rank++) {
+         //   document.write ("Our rank is currently: " + rank + "<br>");
+          //  for (suit = 1; suit <= 4; suit++) {
+           //     document.write("My suit is currently " + suit + "<br>");
+           // }
+      //  };
+      
+        
+
+        
+//1st card and many more if needed
+      do {
+                
+            hitMe = prompt("Current total: " + total + "Take a card? Y/N");
+            if (hitMe == "Y"){
+                hitMe = true;      
+                card = Math.ceil(11*Math.random());
+                total += card;
+            } else{
+                hitMe = false;
+            }
+      } while (hitMe && total <= 21);          
+      
+      //final total
+
+      //dealer always takes 2 cards
+      dealer = Math.ceil(11*Math.random()) + Math.ceil(11*Math.random());
+
+      alert("Your hand is worth " + total + ". Dealer got " + dealer + ".");
+    
+      if (total <= 21 && total > dealer) {
+        document.write("You won!");
+      } else if (total == dealer) {
+        document.write("It's a tie! Let's go again.")
+      } else {
+        document.write("Better luck next time!");
+      }
+
+
+
+      // select a random card from your deck of cards
+      // allow player to take as many cards as they want... maybe we can use a loop for this? 
+            </script>
+        </body>
+    </html>   
