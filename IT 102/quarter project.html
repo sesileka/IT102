@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Sesilina's Recipe Book</title>
+</head>
+<body>
+
+<h1> Sesilina's Recipe Book </h1>
+
+<br>
+
+<header>
+    <p> Welcome to my recipe book! Let me know what you have in your fridge and we can get to cooking. <br> <br>
+
+        Click on the different pages to look at the recipes available to you. Can't decide what to eat? Choose from the list below,
+    and we'll find something for you!
+    </p>
+</header>
+
+<nav>
+
+    <!-- Links to recipes, home page, about--> 
+
+</nav>
+
+ <section>
+
+ </section>
+
+ <!-- Style/Aesthetic Options:
+ 
+ - Recipes will have a corresponding photo
+ - Will use a style sheet to change the look of the recipe book
+ - Time permitting, see if could add a fun cursor option or feature a song from Ratatouille :) 
+ 
+ -->
+
+
+
+
+<!-- Ingredient 1 Choice with a drop down menu -->
+<label for = "ing1"> Choose an ingredient: </label>
+<select name = "ing1" id = "ing1">
+<optgroup label ="Dairy"> 
+    <option value ="milk"> Milk </option>
+    <option value ="eggs"> Eggs </option>
+    <option value ="cheese"> Cheese </option>
+</optgroup>
+</select>
+<!-- Ingredient 2 Choice with a drop down menu... starch option -->
+ <label for = "ing2"> Choose an ingredient: </label>
+<select name = "ing2" id = "ing2">
+<optgroup label ="Starch"> 
+    <option value ="Pasta"> Pasta </option>
+    <option value ="Potatoes"> Potatoes </option>
+    <option value ="Rice"> Rice </option>
+</optgroup>
+</select>
+<!-- Ingredient 3 Choice with a drop down menu... meat option -->
+ <label for = "ing3"> Choose an ingredient: </label>
+<select name = "ing3" id = "ing3">
+<optgroup label ="Meat or Vegetables"> 
+    <option value ="beef"> Beef </option>
+    <option value ="chicken"> Chicken </option>
+    <option value ="pork"> Pork </option>
+    <option value="Brocolli"> Brocolli </option> 
+    <option value ="Spinach"> Spinach </option>
+    <option value ="Onions"> Onion </option>
+</optgroup>
+</select>
+<br>
+<br>
+
+<!-- onclick will test whether options from ing1/ing2/ing3 match a recipe.-->
+<button type = "button" onclick="restart()" id = findRecipe> Let's find a recipe! </button>
+
+<!-- Each ingredient drop down will have 3 different options-->
+<!-- After ingredients are submitted, they will be stored in a literal object/an array. 
+
+Recipes will be stored in objects and available to view  seperately via clicking onto another page to simulate viewing pages of a recipe book. 
+ -->
+
+
+
+<button type = "button" onclick="" id = "restartSearch"> Let's restart our search. </button>
+<!--restartSearch will clear any suggested recipes and the user will select new ingredients-->
+
+
+<script>
+// Starting page will be the 'index', styled after a recipe book page. Recipe images will be stored within an 'images folder'. 
+// Each recipe will feature a photo, come with a set of instructions on preparation.
+// Recipe book will feature recipes that feature one ingredient from 3 different categories, dairy, starch, meat or vegetable
+// Create a 'matchesRecipe' boolean value, that will return true when 3 ingredients match with the recipe
+// var matchesRecipe = false
+// If matchesRecipe is true, display recipe to user via innerHTML update or display links to recipe pages
+
+//Recipes will be stored within objects made from a constructor object that will have 3 properties each pertaining to a different ingredient category. 
+
+// function Recipe() {
+//  this.dairy = dairy;
+//  this.starch = starch;
+//  this.meatVeggie = meatVeggie;
+//}
+// var recipe1 = new Recipe("cheese", "pasta", "beef"); 
+// There will be an option to 'restart your search' (naming WIP),  it will reset the recipe options available to the user, by updating matchesRecipe == false
+
+// function restart (matchesRecipe) {
+// var matchesRecipe = false;
+//
+//}
+
+</script>
+</body>
+
+
+</html>
