@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <title> Shuffle the Deck of Cards </title>
+    </header>    
+
+<body>
+
+
+<script>
+for (let i = deck.length; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    let temp = deck[i];
+    deck[i] = deck[j];
+    deck[j] = temp;
+    //above is number being generated from let j
+    // that number swapping with 51, position 37 n position 51 swapping spots
+}
+</script>   
+
+</body>        
+
+</html>    
