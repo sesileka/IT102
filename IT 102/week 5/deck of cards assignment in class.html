@@ -4,36 +4,108 @@
         <title> Deck of Cards </title>
     </head>
     <body>
-        <script>
-            //name variables after location within an array
-            //cards will be stored in an array... create a for loop to make the cards b/c we know the amt
+        <h1> Deck of Cards Assignment </h1>
 
-            //for (card = 0; card < 52; card++) {
-                
-           // }
+        <button type = "button" onClick="dealCard()"> Deal Cards </button>
+
+        <p id = "Output"></p>
+        <script>
 
            // Initialize an empty array to store a deck of cards
 
            var deck = []; 
             // Loop until the deck of 52 cards
 
-            for (card = 0; card < 52; card++)  {
-                for (suit = 0; suit) {
-
-                }
-                }
+            function Card(suit,rank){
+            this.suit = suit;
+            this.rank = rank;
+            this.isVisible = false;
+            this.show = function() {
+                this.isVisible = true; 
+            };
+            this.hide = function() { 
+                this.isVisible = false;
+            };
             }
-                //Use Card Object
-                //Outer Loop Suite...4 times
-                //Inner Loop Rank 13 times...
-            // Initialize an empty array to store the hand of cards
+
+            var hearts = [];
+            var spades = [];
+            var clubs = [];
+            var diamonds = [];
+
+            for (i = 0; i < 13; i++) {
+                spades[i] = new Card ("spades", i+1);
+                hearts[i] = new Card ("hearts", i + 1);
+                diamonds[i] = new Card ("diamonds", i + 1);
+                clubs[i] = new Card ("clubs", i + 1);
+                if (i == 0) {hearts[i].rank = "ace";}
+                if (i == 10) {hearts[i].rank = "jack";}
+                if (i == 11) {hearts[i].rank = "queen";}
+                if (i == 12) {hearts[i].rank = "king";}
+                if (i == 0) {spades[i].rank = "ace";}
+                if (i == 10) {spades[i].rank = "jack";}
+                if (i == 11) {spades[i].rank = "queen";}
+                if (i == 12) {spades[i].rank = "king";}
+                if (i == 0) {diamonds[i].rank = "ace";}
+                if (i == 10) {diamonds[i].rank = "jack";}
+                if (i == 11) {diamonds[i].rank = "queen";}
+                if (i == 12) {diamonds[i].rank = "king";}
+                 if (i == 0) {clubs[i].rank = "ace";}
+                if (i == 10) {clubs[i].rank = "jack";}
+                if (i == 11) {clubs[i].rank = "queen";}
+                if (i == 12) {clubs[i].rank = "king";}
+            }
+
+            var completeDeck = deck.concat(hearts,spades,diamonds,clubs);
+            //document.write(completeDeck[1].suit + completeDeck[11].rank);
+            //document.write(completeDeck[51].suit + completeDeck[51].rank);
+
+
+         // Initialize an empty array to store the hand of cards
+
+           // function dealCard(completeDeck) {
+            var hand = [];    
+            var handCounter = hand.length;
+
+            while (hand.length != 3) {
+            var pickedCard = Math.floor(Math.random()*52);
+
+            if (completeDeck[pickedCard] != "duplicate") {
+                hand[i] = completeDeck[pickedCard];
+                completeDeck[pickedCard] = "duplicate";
+                i++;
+            }
+                
+            }    
+            document.write(hand[0]);
+
+            //}
+
+
+
+           
+        
+
             // Initialize a counter variable to keep track of the number of cards in hand
+
+            
+
             // Loop until the hand has 3 cards
             // Check if the picked card is not already dealt (not in the hand)
                 // Deal the card to the hand
                 // Mark the card as "dealt" to avoid duplicates
                 // Increment the card counter
             // Output the hand of cards
+
+
+             // initially wanted to use this to follow pseudocode...
+           // for (suit = 0; suit < 4 ; suit++) {
+             //   for(rank = 0; rank < 13; rank++) {
+                // if deck[suit] == 0, card.suit = spades
+               // document.write("Suit: " + suit + " ");
+               // document.write("Rank: " + rank) + "<br>";
+               //use if statements to define suit? if suit = 0, 
+                //}
         </script>
 
     </body>
