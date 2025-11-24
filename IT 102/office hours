@@ -57,6 +57,9 @@
                 deck.push(card);
                 
                 document.write(deck[0].card);
+                console.log(deck.toString());
+                // why am i getting undefined from ^?
+                console.log(deck[card]);
                }
             }
         }
