@@ -13,10 +13,12 @@
             
            // Initialize an empty array to store a deck of cards
 
-            var deck = []; 
          
             // Loop until the deck of 52 cards
 
+            var deck = []; 
+
+           
 
             function generateDeck() {
 
@@ -27,7 +29,7 @@
                 };
             // I attempted to use the for loop below to create 52 card objects in the array, with the idea 
             // of changing the properties with a seperate for loop... however, I'm unsure of where to start on changing the properties  
-            
+
                 //for (cards = 0; cards < 52; cards++) {
                 //let card = new Card();
                 //document.write("New card made " + card);
@@ -47,11 +49,13 @@
             for (cardSuit = 0; cardSuit < 4; cardSuit++) {
               for (cardRank = 0 ; cardRank < 13; cardRank++ ) {
                 var card = {rank: cardRank, suit: cardSuit};
+                console.log( cardRank + " of " + cardSuit);
               // if (cardRank == 0) {deck[cardRank].rank = "ace";}
                //if (cardRank == 10) {deck[cardRank].rank = "jack";}
                //if (cardRank == 11) {deck[cardRank].rank = "queen";}
                //if (cardRank == 12) {deck[cardRank].rank = "king";}
                 deck.push(card);
+                
                 document.write(deck[0].card);
                }
             }
