@@ -17,6 +17,7 @@
             // Loop until the deck of 52 cards
 
             var deck = []; 
+            var stringDeck = [];
 
            
 
@@ -49,16 +50,19 @@
             for (cardSuit = 0; cardSuit < 4; cardSuit++) {
               for (cardRank = 0 ; cardRank < 13; cardRank++ ) {
                 var card = {rank: cardRank, suit: cardSuit};
+
+                // attempt to just store cards as strings in array vs object
+                var cardString = (cardRank + " of " + cardSuit);
                 console.log( cardRank + " of " + cardSuit);
               // if (cardRank == 0) {deck[cardRank].rank = "ace";}
                //if (cardRank == 10) {deck[cardRank].rank = "jack";}
                //if (cardRank == 11) {deck[cardRank].rank = "queen";}
                //if (cardRank == 12) {deck[cardRank].rank = "king";}
+                stringDeck.push(cardString);
+                console.log(cardString[0].toString());
                 deck.push(card);
-                
+                console.log(deck[card]);
                 document.write(deck[0].card);
-                console.log(deck.toString());
-                // why am i getting undefined from ^?
                 console.log(deck[card]);
                }
             }
