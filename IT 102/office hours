@@ -51,7 +51,7 @@
               for (cardRank = 0 ; cardRank < 13; cardRank++ ) {
                 var card = {rank: cardRank, suit: cardSuit};
 
-                // attempt to just store cards as strings in array vs object
+                // cardString is an attempt to just store cards as strings in array vs object
                 var cardString = (cardRank + " of " + cardSuit);
                 console.log( cardRank + " of " + cardSuit);
               // if (cardRank == 0) {deck[cardRank].rank = "ace";}
