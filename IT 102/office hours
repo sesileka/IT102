@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Deck of Cards </title>
+    </head>
+    <body>
+        <h1> Deck of Cards Assignment </h1>
 
+        <button type = "button" onClick="generateDeck()"> Deal Cards </button>
+
+        <p id = "Output"></p>
+        <script>
+            
+           // Initialize an empty array to store a deck of cards
+
+            var deck = []; 
+         
+            // Loop until the deck of 52 cards
+
+
+            function generateDeck() {
+
+              // my constructor  
+                function Card(suit,rank){
+                this.suit = suit;
+                this.rank = rank;
+                };
+            // I attempted to use the for loop below to create 52 card objects in the array, with the idea 
+            // of changing the properties with a seperate for loop... however, I'm unsure of where to start on changing the properties  
+            
+                //for (cards = 0; cards < 52; cards++) {
+                //let card = new Card();
+                //document.write("New card made " + card);
+                //deck.push(card);
+                //console.log(deck.length);
+           // }
+
+           // For loop below pairs w/ the loop above... 
+
+              //  for (cardSuit = 0; cardSuit<4; cardSuit++) {
+                //    for (cardRank = 0; cardRank < 13; cardRank++) {
+                  //      deck.length = card[i].rank = cardRank[cardRank];
+                    //    deck.length = card[i].suit = cardSuit[cardSuit];
+                    //}
+               // }
+
+            for (cardSuit = 0; cardSuit < 4; cardSuit++) {
+              for (cardRank = 0 ; cardRank < 13; cardRank++ ) {
+                var card = {rank: cardRank, suit: cardSuit};
+              // if (cardRank == 0) {deck[cardRank].rank = "ace";}
+               //if (cardRank == 10) {deck[cardRank].rank = "jack";}
+               //if (cardRank == 11) {deck[cardRank].rank = "queen";}
+               //if (cardRank == 12) {deck[cardRank].rank = "king";}
+                deck.push(card);
+                document.write(deck[0].card);
+               }
+            }
+        }
+
+       
+         // Initialize a counter variable to keep track of the number of cards in hand
+        // Loop until the hand has 3 cards
+        // Check if the picked card is not already dealt (not in the hand)
+        // Deal the card to the hand
+        // Mark the card as "dealt" to avoid duplicates
+        // Increment the card counter
+        // Output the hand of cards
+
+        </script>
+
+    </body>
+</html>
