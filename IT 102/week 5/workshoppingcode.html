@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Deck of Cards </title>
+    </head>
+    <body style = background-color:#32CD32 >
+        <h1 style="color:white; font-family:verdana;"> Deck of Cards Assignment </h1>
+
+        <img src = "https://static.wikia.nocookie.net/balatrogame/images/2/24/Red_Deck.png/revision/latest/scale-to-width-down/80?cb=20240313231252">
+        <br>
+        <button type = "button" onClick="generateDeck()"> Deal Cards </button>
+
+        <p id = "Output" style="color:white; font-family:verdana"></p>
+        <h3 id = "counter" style="color:white; font-family:verdana"> Cards in hand:  </p>
+        <script>
+            
+
+           function generateDeck() {
+            // constructor for my card object
+            function Card(suit,rank){
+                this.suit = suit;
+                this.rank = rank;
+                }
+
+            var deck = []; 
+
+            var suits = ["hearts", "spades", "clubs", "diamonds"];
+
+            var rank = ["ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"];
+                // looping to create 52 cards
+            for (i = 0; i < suits.length ; i++ ) {
+                for (j = 0; j < rank.length; j++) {
+                    deck.push(new Card(suits[i], rank[j] ));
+                }
+            }
+
+            
+             var hand = [];
+            //counter 
+            var i = 0;
+
+            // check for duplicates and mark cards as duplicates 
+            while (hand.length != 3) {
+            var pickedCard = Math.floor(Math.random()*52);
+                if (deck[pickedCard] != "duplicate") {
+                    hand[i] = deck[pickedCard];
+                    deck[pickedCard] = "duplicate";
+                    i++;
+                } 
+            }   
+
+            //deal cards
+            document.getElementById("Output").innerHTML = (hand[0].rank + " of " + hand[0].suit + ", " + hand[1].rank + " of " + 
+            hand[1].suit + ", "+  hand[2].rank + " of " + hand[2].suit);
+
+            document.getElementById("counter").innerHTML = "Cards in hand: " +  i;
+           }
+    
+        </script>
+
+    </body>
+</html>
