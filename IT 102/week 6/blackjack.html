@@ -1,80 +1,82 @@
-<!DOCTYPE html>
-    <html>
-        <header>
-            <title> Blackjack Game </title>
-        </header>   
-        
-        <h1> Blackjack </h1>
+<!DOCTYPE html> 
+<html>
+    <header> 
+        <title> blackjack game </title>
+    </header>    
 
-        
-        <body>
-            <script>
-                 //initialize all variables
-      var card = 0;
-      var total = 0;
-      var hitMe = true;
-      var dealer = 0;
+    <body>
+
+        <h1> Blackjack Game </h1>
+
+        <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwcSfUfWmsCBbMRJEM2BVoFVndD85DymflNw&s" alt = "photo of the words blackjack in gold">
+        <br>
+        <button type = "button" onclick="playGame()"> Play </button>
+        <br>
+        <br>
+        <p1 id = "gametext"> Let's get this game started. </p1>
+        <br>
+        <p2 id = "dealer"> Dealer score: </p2>
+        <br>
+        <p2 id = "user"> User score: </p2>
 
 
-// constructor card object
-      function Card(suit,rank) {
-        this.suite = suit;
-        this.rank = rank;
-        this.isVisible = false;
-        this.show = function() {
-            this.isVisible = true;
-        };
-        this.hide = function() {
-            this.isVisible = false;
-        };
-      }
-// deck of cards
+        <script>
+          
 
-      var deck = [];
 
-     
-        //for (rank = 1; rank <= 13; rank++) {
-         //   document.write ("Our rank is currently: " + rank + "<br>");
-          //  for (suit = 1; suit <= 4; suit++) {
-           //     document.write("My suit is currently " + suit + "<br>");
-           // }
-      //  };
-      
-        
+            function playGame() {
 
-        
-//1st card and many more if needed
-      do {
-                
-            hitMe = prompt("Current total: " + total + "Take a card? Y/N");
-            if (hitMe == "Y"){
-                hitMe = true;      
-                card = Math.ceil(11*Math.random());
-                total += card;
-            } else{
-                hitMe = false;
+             //initialize variables
+            var card = 0;
+            var total = 0;
+            var hitMe = true;
+            var dealer = 0;
+            // constructor for my card object
+            function Card(suit,rank){
+                this.suit = suit;
+                this.rank = rank;
+                }
+
+            var deck = []; 
+            var suits = ["hearts", "spades", "clubs", "diamonds"];
+            // rank has been adjusted to reflect numeric value of the numbers, with ace being 1 instead of typical rule of 1/11
+            var rank = [1,2,3,4,5,6,7,8,9,10,10,10,10];
+                // looping to create 52 cards
+            for (i = 0; i < suits.length ; i++ ) {
+                for (j = 0; j < rank.length; j++) {
+                    deck.push(new Card(suits[i], rank[j] ));
+                }
             }
-      } while (hitMe && total <= 21);          
-      
-      //final total
 
-      //dealer always takes 2 cards
-      dealer = Math.ceil(11*Math.random()) + Math.ceil(11*Math.random());
+            do {
+                hitMe = prompt("Current total:  " + total + " Take a card? Y/N");
+                        if (hitMe == "Y"){
+                            hitMe = true;      
+                            var pickedCard = Math.floor(Math.random()*52);
+                            total += deck[pickedCard].rank;
+                        } else{
+                            hitMe = false;
+                        }
+             } while (hitMe);       
+            //dealer always takes 2 cards
+            dealer =  deck[pickedCard].rank + deck[pickedCard].rank;
 
-      alert("Your hand is worth " + total + ". Dealer got " + dealer + ".");
-    
-      if (total <= 21 && total > dealer) {
-        document.write("You won!");
-      } else if (total == dealer) {
-        document.write("It's a tie! Let's go again.")
-      } else {
-        document.write("Better luck next time!");
-      }
+            //final total
+            alert("Your hand is worth " + total + ". Dealer got " + dealer + ".");
+            document.getElementById("dealer").innerHTML = "Dealer hand is worth: " + dealer;
+            document.getElementById("user").innerHTML = "Your hand is worth: " + total;
+            if (total <= 21 && total > dealer) {
+                document.getElementById("gametext").innerHTML = "You won!";
+            } else if (total == dealer) {
+                document.getElementById("gametext").innerHTML = "It's a tie! Let's go again.";
+            } else {
+                document.getElementById("gametext").innerHTML ="Better luck next time!";
+            }
+
+        }
+
+        </script>
+    </body>
 
 
-
-      // select a random card from your deck of cards
-      // allow player to take as many cards as they want... maybe we can use a loop for this? 
-            </script>
-        </body>
-    </html>   
+</html>
