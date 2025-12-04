@@ -6,19 +6,23 @@
     <title>Blackjack Game</title>
     <link rel="stylesheet" href="styles/style.css">
     <script>
+	
+		function startGame(){
 
-        function startGame() {
-            var inputCheck = document.getElementById("userInput").value; 
-            
-           
-            if (inputCheck == "" && isNaN(inputCheck) == false) {
-                alert("Please enter in a username without any numbers or special characters.");
-            } 
+            var username = document.getElementById("userInput").value;
 
+            function validateUsername(){
+            console.log(username);
+            let specialCharacters = /^[a-zA-Z]{1,799}$/; 
+            return specialCharacters.test(username);
             }
             
-        
-
+            if (validateUsername(username) == false) {
+                alert("Please enter in a username without special characters, numbers or spaces.");
+            } else {
+                console.log("Nice username!");
+            }
+    }
         
     </script>
 </head>
@@ -31,7 +35,7 @@
 		</form>
         
     </div>
-    
+
     <div id="gameArea" style="display: none;">
         <h2 id="welcomeMessage"></h2>
         
