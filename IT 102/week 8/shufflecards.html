@@ -6,39 +6,65 @@
 
 
   <body>
-      <h1> Deck of Cards Assignment </h1>
-
-        <button type = "button" onClick="playGame()"> Deal Cards </button>
+<h1>Shuffling the Deck</h1>
+        <button type = "button" onClick="generateDeck()"> Generate Deck </button>
+        <button type = "button" onClick="shuffleDeck()"> Shuffle Deck</button>
 
         <p id = "Output"></p>
     <script>
       //Utilize the deck of 52 playing cards that was produced through the "Deck of Cards Assignment" code.
     //After the complete deck has been generated, showcase its contents (display all cards).
-      function playGame() {
-
+        
 
         var deck = []; 
+
+          function generateDeck() {
+            deck = [];
+          let showDeck = document.getElementById("Output");
+            // constructor for my card object
+            function Card(suit,rank){
+                this.suit = suit;
+                this.rank = rank;
+                }
+
             var suits = ["hearts", "spades", "clubs", "diamonds"];
             var rank = ["ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"];
-            var hand = [];
-            var counter = hand.length; 
             for (i = 0; i < suits.length ; i++ ) {
                 for (j = 0; j < rank.length; j++) {
-                    deck.push(rank[j] + " of " + suits[i] );
+                    deck.push(new Card(suits[i], rank[j] ));
                 }
             }
-            for (let key in deck){
-               document.write(deck[key]+"<br>");
+          
+            // using for in loop to iterate though deck and display cards
+            for (let  x in deck) {
+                showDeck.innerHTML += ((deck[x]["rank"] + " of " + deck[x]["suit"] + "<br>"));
             }
+          console.log(deck.length)
+          }
+          
+          function shuffleDeck() {
+          let showDeck = document.getElementById("Output");
+          showDeck.innerHTML = "";
 
-        //Devise a procedure for shuffling the deck of cards.
-        for (let i = deck.length - 1; i > 0; i--) {
-              let j = Math.floor(Math.random() * (i + 1)) ;    
+          console.log(deck.length)
+
+          //Devise a procedure for shuffling the deck of cards.
+            for (let i = deck.length - 1; i > 0; i--) {
+             let j = Math.floor(Math.random() * (i + 1)) ;    
              let temp = deck[i];
-              deck[i] = deck[j];
-            deck[j] = temp;
-             }
-    //Present the shuffled deck of cards (display all cards).
+                deck[i] = deck[j];
+                deck[j] = temp;
+            }
+          //Present the shuffled deck of cards (display all cards).
+              for (let  x in deck) {
+                showDeck = document.getElementById("Output");
+                showDeck.innerHTML += ((deck[x]["rank"] + " of " + deck[x]["suit"] + "<br>"));
+            }
+          }
+    
+
+      //}
+    
     </script>
   </body>
 </html>
