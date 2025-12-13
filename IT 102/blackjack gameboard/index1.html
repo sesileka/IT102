@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blackjack Game</title>
+<link rel="stylesheet" href="styles/style.css">
+
+<script>
+// global variables
+const suits = ["spades", "hearts", "diamonds", "clubs"];
+const ranks = ["A",2,3,4,5,6,7,8,9,10,"J","Q","K"];
+var deck = []; 
+
+// Validate username
+function validateUserName(username) {
+    return new Promise(function(resolve, reject) {
+        if(!username.trim()) {
+            reject("User name cannot be blank.");
+            return;
+        }
+        var regex = /^[a-zA-Z]+$/;
+        if(!regex.test(username)) {
+            reject("User name can only contain alpha characters.");
+            return;
+        }
+        resolve(username);
+    });
+}
+
+// Create full deck
+function createDeck() {
+    deck = [];
+    for (let suit = 0; suit < suits.length; suit++) {
+        for (let rank = 0; rank < ranks.length; rank++) {
+            deck.push(new Card(suit, rank));
+        }
+    }
+}
+
+// Card constructor
+function Card(suit, rank) {
+    this.suit = suits[suit];
+    this.rank = ranks[rank];
+    this.isVisible = true; // visibility on table
+    this.dealt = false;    // used to track if drawn
+    this.image = this.constructCardImage();
+}
+
+// Card prototype to use actual card images
+Card.prototype.constructCardImage = function() {
+    var rankStr = "";
+    switch(this.rank) {
+        case "A": rankStr = "ace"; break;
+        case "J": rankStr = "jack"; break;
+        case "Q": rankStr = "queen"; break;
+        case "K": rankStr = "king"; break;
+        default: rankStr = this.rank.toString(); break;
+    }
+    return "images/" + rankStr + "_of_" + this.suit + ".svg";
+};
+
+// Show card: face up or back image if hidden
+Card.prototype.show = function() {
+    if (this.isVisible) {
+        return '<img src="' + this.image + '" height="87" width="100">';
+    } else {
+        return '<img src="images/back.png" height="87" width="60">';
+    }
+};
+
+// Hide card
+Card.prototype.hide = function() {
+    this.isVisible = false;
+};
+
+// Shuffle deck using Fisher-Yates
+function shuffleDeck() {
+    for (var i = deck.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = deck[i];
+        deck[i] = deck[j];
+        deck[j] = temp;
+    }
+
+    // Reset all cards
+    for (var i = 0; i < deck.length; i++) {
+        deck[i].isVisible = true;
+        deck[i].dealt = false;
+    }
+
+    dealInitialCards(); // deal cards after shuffle
+    alert("Deck shuffled and new cards dealt!");
+}
+
+// Deal 2 dealer (one face down) and 2 player
+function dealInitialCards() {
+    var dealerCardsHTML = "";
+    var playerCardsHTML = "";
+
+    // Dealer first card face up
+    deck[0].dealt = true;
+    deck[0].isVisible = true;
+    dealerCardsHTML += deck[0].show();
+
+    // Dealer second card face down
+    deck[1].dealt = true;
+    deck[1].isVisible = false;
+    dealerCardsHTML += deck[1].show();
+
+    document.getElementById("dealerCards").innerHTML = dealerCardsHTML;
+
+    // Player first 2 cards face up
+    for (var i = 2; i < 4; i++) {
+        deck[i].dealt = true;
+        deck[i].isVisible = true;
+        playerCardsHTML += deck[i].show();
+    }
+    document.getElementById("playerCards").innerHTML = playerCardsHTML;
+}
+
+
+
+// Start game
+async function startGame() {
+    var username = document.userForm.elements[0].value.trim();
+    try {
+        var validUsername = await validateUserName(username);
+        document.getElementById('userForm').style.display = 'none';
+        document.getElementById('gameArea').style.display = 'block';
+        document.getElementById('welcomeMessage').textContent = "Welcome " + validUsername + "!";
+
+        createDeck();
+        shuffleDeck();       // shuffle
+        dealInitialCards();  // deal initial cards
+    } catch (error) {
+        alert(error);
+    }
+}
+
+// Stand: reveal dealer's hidden card
+function stand() {
+    // Reveal dealer's second card
+    deck[1].isVisible = true;
+
+    var dealerHTML = "";
+    for (var i = 0; i < deck.length; i++) {
+        if (deck[i].dealt && i < 2) { // only first 2 dealer cards
+            dealerHTML += deck[i].show();
+        }
+    }
+    document.getElementById("dealerCards").innerHTML = dealerHTML;
+
+    alert("Dealer's hidden card revealed! Dealer's turn can be implemented next.");
+}
+
+// Hit: draw next card for player
+function hit() {
+    var nextCard = null;
+    for (var i = 0; i < deck.length; i++) {
+        if (!deck[i].dealt) {
+            nextCard = deck[i];
+            deck[i].dealt = true;
+            deck[i].isVisible = true;
+            break;
+        }
+    }
+
+    if (!nextCard) {
+        alert("No more cards in the deck!");
+        return;
+    }
+
+    var existing = document.getElementById("playerCards").innerHTML;
+    document.getElementById("playerCards").innerHTML = existing + nextCard.show();
+}
+
+// Return to form
+function returnToForm() {
+    document.getElementById('userForm').style.display = 'block';
+    document.getElementById('gameArea').style.display = 'none';
+}
+
+</script>
+</head>
+<body>
+<div class="game-container">
+    <h1>Blackjack Game</h1>
+    <form name="userForm" id="userForm" style="display: block;">
+        Enter your name: <input type="text"> 
+        <input type="button" value="Start Game" onclick="startGame()">
+    </form>
+</div>
+
+<div id="gameArea" style="display: none;">
+    <h2 id="welcomeMessage"></h2>
+
+    <div>
+        <h3>Dealer's Cards:</h3>
+        <div id="dealerCards" class="cards"></div>
+    </div>
+
+    <div>
+        <h3>Your Cards:</h3>
+        <div id="playerCards" class="cards"></div>
+    </div>
+
+    <div id="buttons">
+        <button id="hitButton" onclick="hit()">Hit</button>
+        <button id="standButton" onclick="stand()">Stand</button>
+        <button id="shuffleButton" onclick="shuffleDeck()">Shuffle Deck</button>
+    </div>
+
+    <h3 id="resultMessage"></h3>
+
+    <button onclick="returnToForm()">Return to Form</button>
+</div>
+</body>
+</html>
