@@ -1,0 +1,47 @@
+@font-face {
+    font-family:'VCR';
+    src:
+        url(../fonts/pixel.ttf);
+    
+}
+
+img {
+    width: 15%;
+    height:15%;  
+    display: block;
+    margin: auto;
+      
+}
+
+h1 {
+    font-family: 'VCR';
+    border: 3px solid;
+    border-color: #594218;
+    background-color: #E0C396;
+    padding: 10px;
+
+}
+
+p
+ {
+    font-family: 'VCR';
+    border: 3px solid;
+     border-color: #594218;
+    background-color: #E0C396;
+    margin: 5px;
+
+}
+
+body {
+    font-family: 'VCR';
+    background-image: url("../images/kitchen.gif");
+    background-size: cover;
+}
+
+div {
+    font-family: 'VCR';
+    border: 3px solid;
+    border-color: #594218;
+    background-color: #E0C396;
+    margin: 5px;
+}

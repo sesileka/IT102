@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Sesilina's Recipe Book</title>
+<link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+<header>
+<h1> Sesilina's Recipe Book </h1>
+</header>
+<br>
+<p> Welcome to my recipe book! Let me know what you have in your fridge and we can get to cooking. <br> <br>
+
+Select ingredients from your home from the options below and a recipe from my recipe book will display.
+
+</p>
+<br>
+<button onclick = generateRecipe()> Find a recipe! </button>
+<br>
+<br>
+<br>
+
+<div>
+<!-- Ingredient 1 Choice with a drop down menu -->
+<label for = "ing1"> Choose an ingredient: </label>
+<select name = "ing1" id = "ing1">
+<optgroup label ="Dairy"> 
+    <option value ="...">...</option>
+    <option value ="parmesan"> Parmesan Cheese </option>
+    <option value ="eggs"> Eggs </option>
+</optgroup>
+</select>
+<!-- Ingredient 2 Choice with a drop down menu... starch option -->
+ <label for = "ing2"> Choose an ingredient: </label>
+<select name = "ing2" id = "ing2">
+<optgroup label ="Starch"> 
+    <option value = "...">...</option>
+    <option value ="pasta"> Pasta </option>
+    <option value ="rice"> Rice </option>
+</optgroup>
+</select>
+<!-- Ingredient 3 Choice with a drop down menu... meat/veg option -->
+ <label for = "ing3"> Choose an ingredient: </label>
+<select name = "ing3" id = "ing3">
+<optgroup label ="Meat"> 
+    <option value = "...">...</option>
+    <option value ="beef"> Beef </option>
+    <option value ="chicken"> Chicken </option>
+</optgroup>
+<optgroup label ="Vegetables">
+    <option value="brocolli"> Brocolli </option> 
+    <option value ="spinach"> Spinach </option>
+</optgroup>
+</select>
+<br>
+<p1> Recipes found:</p1>
+<br>
+<img src = "images/loading1.gif" id = "recipeImage" >
+<br>
+<p1 id = "titleOutput"></p1>
+</p1>
+<br>
+<p2 id = "recipeOutput"></p2>
+</div>
+<script>
+// Recipes
+
+//const recipes = ["eggricechicken", "eggricebeef", "eggsricebrcolli", "milkpastachicken","milkpastaspinach",];
+
+function recipe(dairy, starch, vegMeat) {
+    this.dairy = dairy;
+    this.starch = starch;
+    this.vegMeat = vegMeat;
+}
+const friedriceChicken = new recipe("eggs","rice","chicken"); 
+const friedriceBeef = new recipe("eggs","rice","beef");
+const friedriceVeg = new recipe("eggs","rice","brocolli");
+const creamypastaChicken= new recipe("parmesan", "pasta", "chicken");
+const creamypastaSpinach = new recipe("parmesan", "pasta", "spinach");
+
+
+
+//accessing user input
+
+function generateRecipe(){
+//matching boolean
+var matchesRecipe = false;
+
+
+    let titleOutput = document.getElementById("titleOutput");
+    let recipeOutput = document.getElementById("recipeOutput");
+    let recipeImage = document.getElementById("recipeImage");
+    let ing1 = document.getElementById("ing1").value;
+    let ing2 = document.getElementById("ing2").value;
+    let ing3 = document.getElementById("ing3").value
+
+
+    if (ing1 == "eggs" && ing2 == "rice" && ing3 == "chicken") {
+                titleOutput.innerHTML =  "With " + friedriceChicken.dairy + ", " + friedriceChicken.starch + " and " + friedriceChicken.vegMeat + " we can make chicken fried rice!" + "<br>"; 
+                recipeOutput.innerHTML = ("Chicken Fried Rice" + "<br>"  + "Ingredients:" + "<br>" + "> Chicken" + "<br>" + "> Eggs" + "<br>" + "> Rice, day old rice works best!" +
+                "<br>" + "> Neutral Oil" + "<br>" + "> Seasonings of choice" + "<br>" + "> Soy Sauce" + "<br>" + "> Garlic Cloves" + "<br>" + "Directions:" + "<br>" + 
+                 "---Eggs---" + "<br>" +  "> Heat a pan to medium-low" + "<br>" +  "> Crack desired amount of eggs into bowl and whisk until yolks are scrambled" + "<br>" +
+                "> Once pan is heated to medium-low add in neutral oil and egg" +  "<br>" + "> Scramble eggs and cook till done. Set aside." + "<br>" + 
+                    "---Chicken---" + "<br>" + "> Prepare the chicken for cooking by coating with desired seasonings" + "<br>" +  
+                    "> Heat up a pan with available neutral oil, cook chicken till cooked" + "<br>" +
+                    "> Cut chicken into bite sized pieces." + "<br>" + "---Fried rice---" + "<br>" + "> Dice desired amount of garlic cloves "+ "<br>" + 
+                    "> Heat pan to medium with available neutral oil, and add in diced garlic" + "<br>" + 
+                    "> Once garlic is aromatic, add in cooked rice and mix, breaking apart any pieces of rice stuck together." + "<br>" + 
+                    "> Add in 2 tbps of soy sauce and mix thoroughly coating rice in soy sauce" + "<br>" +  "> Add in cooked egg and chicken." + "<br>" + "> Turn off heat and plate.");
+                recipeImage.src = "images/chickenfriedrice.jpg";
+                matchesRecipe = true;
+        } else if (ing1 == "eggs" && ing2 == "rice" && ing3 == "beef") {
+                titleOutput.innerHTML = "With " + friedriceBeef.dairy + ", " + friedriceBeef.starch + " and " + friedriceBeef.vegMeat + " we can make beef fried rice!"  + "<br>"; 
+                recipeOutput.innerHTML = ("Beef Fried Rice" + "<br>"  + "Ingredients:" + "<br>" + "> Beef" + "<br>" + "> Eggs" + "<br>" + "> Rice, day old rice works best!" +
+                "<br>" + "> Neutral Oil" + "<br>" + "> Seasonings of choice" + "<br>" + "> Soy Sauce" + "<br>" + "> Garlic Cloves" + "<br>" + "Directions:" + "<br>" + 
+                 "---Eggs---" + "<br>" +  "> Heat a pan to medium-low" + "<br>" +  "> Crack desired amount of eggs into bowl and whisk until yolks are scrambled" + "<br>" +
+                "> Once pan is heated to medium-low add in neutral oil and egg" +  "<br>" + "> Scramble eggs and cook till done. Set aside." + "<br>" + 
+                    "---Beef---" + "<br>" + "> Prepare the beef for cooking by coating with desired seasonings" + "<br>" +  
+                    "> Heat up a pan with available neutral oil, cook beef till cooked" + "<br>" +
+                    "> Cut beef into bite sized pieces." + "<br>" + "---Fried rice---" + "<br>" + "> Dice desired amount of garlic cloves "+ "<br>" + 
+                    "> Heat pan to medium with available neutral oil, and add in diced garlic" + "<br>" + 
+                    "> Once garlic is aromatic, add in cooked rice and mix, breaking apart any pieces of rice stuck together." + "<br>" + 
+                    "> Add in 2 tbps of soy sauce and mix thoroughly coating rice in soy sauce" + "<br>" +  "> Add in cooked egg and beef." + "<br>" + "> Turn off heat and plate.");
+                recipeImage.src = "images/beeffriedrice.jpg";
+                matchesRecipe = true;
+                
+        } else if (ing1 == "eggs" && ing2 == "rice" && ing3 == "brocolli") {
+                titleOutput.innerHTML = "With " + friedriceVeg.dairy + ", " + friedriceVeg.starch + " and " + friedriceVeg.vegMeat + " we can make veggie fried rice!" + "<br>"; 
+                recipeOutput.innerHTML = ("Veggie Fried Rice" + "<br>"  + "Ingredients:" + "<br>" + "> Brocolli" + "<br>" + "> Eggs" + "<br>" + "> Rice, day old rice works best!" +
+                "<br>" + "> Neutral Oil" + "<br>" + "> Seasonings of choice" + "<br>" + "> Soy Sauce" + "<br>" + "> Garlic Cloves" + "<br>" + "Directions:" + "<br>" + 
+                 "---Eggs---" + "<br>" +  "> Heat a pan to medium-low" + "<br>" +  "> Crack desired amount of eggs into bowl and whisk until yolks are scrambled" + "<br>" +
+                "> Once pan is heated to medium-low add in neutral oil and egg" +  "<br>" + "> Scramble eggs and cook till done. Set aside." + "<br>" + 
+                    "---Brocolli---" + "<br>" + "> Prepare the brocolli for cooking by coating with desired seasonings" + "<br>" +  
+                    "> Heat up a pan with available neutral oil, cook brocollli till tender" + "<br>" +
+                    "> Cut broclli into bite sized pieces." + "<br>" + "---Fried rice---" + "<br>" + "> Dice desired amount of garlic cloves "+ "<br>" + 
+                    "> Heat pan to medium with available neutral oil, and add in diced garlic" + "<br>" + 
+                    "> Once garlic is aromatic, add in cooked rice and mix, breaking apart any pieces of rice stuck together." + "<br>" + 
+                    "> Add in 2 tbps of soy sauce and mix thoroughly coating rice in soy sauce" + "<br>" +  "> Add in cooked egg and brocolli." + "<br>" + "> Turn off heat and plate.");
+                recipeImage.src = "images/vegfriedrice.jpg";
+                matchesRecipe = true;
+
+    } else if (ing1 == "parmesan" && ing2 == "pasta" && ing3 == "chicken") {
+                titleOutput.innerHTML = "With " + creamypastaChicken.dairy + ", " + creamypastaChicken.starch + " and " + creamypastaChicken.vegMeat + " we can make creamy chicken pasta!"  + "<br>"; 
+                recipeOutput.innerHTML = ("Creamy Chicken Pasta" + "<br>" + "Ingredients:" + "<br>" + "> Chicken" + "<br>" + "> 1/2 Heavy cream OR Milk" + 
+                "<br>" + "> Seasonings of choice (rec: garlic powder, onion powder)" + "<br>" + "> Pasta" + "<br>" + "> Parmesan Cheese" + 
+                 "<br>" + "> Pinch of salt" + "<br>" + "> Neutral Oil" + "<br>" + "Directions:" + "<br>" + " ---Pasta---" + "<br>" + " > Bring a pot of water to boil"  +
+                 "<br>" + "> Salt to taste once the water comes to a boil" + "<br>" + "> Add in available pasta type, and cook according to instructions to al dente" + 
+                "> Save 1 cup of pasta water, and strain pasta once pasta is cooked to al dente  "+ 
+                "and strain pasta noodles under cool water to prevent further cooking. Set pasta aside." + "<br>" + "---Chicken--- " + "<br>" +
+                "> While pasta cooks, prepare the chicken for cooking by coating with desired seasonings." + "<br>" + "> Heat up a pan with available neutral oil, cook chicken till fully cooked."
+                + "<br>" + "> Let chicken cool and cut into bite-sized pieces." + "<br>" + "--Pasta Sauce---" + 
+                 "<br>" + "> Heat up pot used to boil pasta noodles to medium-low heat" + "<br>" + "> Add in 1 half cup of cream/milk and bring to a simmer." +
+                 "<br>" + "> Once cream is at a simmer, drop the heat to low, mix in pasta 1/4 cup of pasta water and add in desired amount of parmesan cheese." + 
+                "<br>" + "> Add same seasonings as you did to the chicken to the sauce." + "<br>" + "> Continue to heat sauce until sauce reaches desired thickness." + 
+                 "<br>" + "---Putting it all together---" + "<br>" + "> Add pasta noodles to sauce, and serve once fully coated. Top with chicken, optional additional cheese and enjoy!");
+                recipeImage.src = "images/creamychickenpasta.jpg";
+                matchesRecipe = true;
+
+    } else if (ing1 == "parmesan" && ing2 == "pasta" && ing3 == "spinach") {
+                titleOutput.innerHTML = "With " + creamypastaSpinach.dairy + ", " + creamypastaSpinach.starch + " and " + creamypastaSpinach.vegMeat + " we can make creamy spinach pasta!" + "<br>"; 
+                recipeOutput.innerHTML = ("Creamy Spinach Pasta" + "<br>" + "Ingredients:" + "<br>" + "> Spinach" + "<br>" + "> 1/2 Heavy cream OR Milk" + 
+                "<br>" + "> Seasonings of choice (rec: garlic powder, onion powder)" + "<br>" + "> Pasta" + "<br>" + "> Parmesan Cheese" + 
+                 "<br>" + "> Pinch of salt" + "<br>" + "> Neutral Oil" + "<br>" + "Directions:" + "<br>" + " ---Pasta---" + "<br>" + " > Bring a pot of water to boil"  +
+                 "<br>" + "> Salt to taste once the water comes to a boil" + "<br>" + "> Add in available pasta type, and cook according to instructions to al dente" + 
+                "> Save 1 cup of pasta water, and strain pasta once pasta is cooked to al dente  "+ 
+                "and strain pasta noodles under cool water to prevent further cooking. Set pasta aside." + "<br>" + "--Pasta Sauce---" + 
+                 "<br>" + "> Heat up pot used to boil pasta noodles to medium-low heat" + "<br>" + "> Add in 1 half cup of cream/milk and bring to a simmer." +
+                 "<br>" + "> Once cream is at a simmer, drop the heat to low, mix in pasta 1/4 cup of pasta water and add in desired amount of parmesan cheese and spinach." + 
+                "<br>" + "> Add in desired seasonings to the sauce." + "<br>" + "> Continue to heat sauce until sauce reaches desired thickness." + 
+                 "<br>" + "---Putting it all together---" + "<br>" + "> Add pasta noodles to sauce, and serve once fully coated. Top with additional cheese and enjoy!");
+                recipeImage.src = "images/creamyvegpasta.jpg";
+                matchesRecipe = true;
+    } else {
+        matchesRecipe = false;
+        recipeImage.src = "images/loading1.gif";
+        if (ing1 || ing2 || ing3  === "...") {
+        alert("No recipe found, try out another ingredient combo and be sure to populate all fields!");
+         }
+    } 
+
+    //return 'no recipe found' if user selection does not match pre-existing 
+     if (matchesRecipe == false) {
+        recipeOutput.innerHTML = "No recipe found";
+        titleOutput.innerHTML = "";
+    }
+
+}
+/// Starting page will be the 'index', styled after a recipe book page. Recipe images will be stored within an 'images folder'. 
+///Recipes will be stored within objects that will 3 properties each pertaining to a different ingredient category. 
+/// Recipe book will feature recipes that feature one ingredient from 3 different categories, dairy, starch, meat or vegetable
+/// Create a 'matchesRecipe' boolean value, that will return true when 3 ingredients match with the recipe
+/// If matchesRecipe is true, display recipe to user via innerHTML update or display links to recipe pages
+/// Each recipe will feature a photo, come with a set of instructions on preparation.
+/// There will be an option to 'restart your search' (naming WIP), but it will reset the recipe options available to the user. 
+
+</script>
+
+
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,24 @@
+quarter project
+
+i want to be able to find a recipe with what i have at home...
+
+when i select items in the drop down menu and hit submit, recipes should generate based off of what i chose
+
+i want for the contents of the page to reset when i hit the 'find another recipe button'?
+
+if values match then return recipe to user first using innerHTML updates 
+
+how to create matching aspect? 
+
+should i store my objects in an array and parse through the array? if my object matches all three keys of an object display the matching object? 
+
+
+i want something to iterate over the objects and return true if it finds an object that matches everything.... 
+
+what can i use here? can i use that object in key thing? 
+
+instead of recipes being stored as objects, i could store them as an array within a string, and look for matching recipes
+
+^ with the above method i would need to store the user results as a string.... simpler? 
+
+
