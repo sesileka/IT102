@@ -65,9 +65,6 @@ Select ingredients from your home from the options below and a recipe from my re
 </div>
 <script>
 // Recipes
-
-//const recipes = ["eggricechicken", "eggricebeef", "eggsricebrcolli", "milkpastachicken","milkpastaspinach",];
-
 function recipe(dairy, starch, vegMeat) {
     this.dairy = dairy;
     this.starch = starch;
@@ -78,10 +75,6 @@ const friedriceBeef = new recipe("eggs","rice","beef");
 const friedriceVeg = new recipe("eggs","rice","brocolli");
 const creamypastaChicken= new recipe("parmesan", "pasta", "chicken");
 const creamypastaSpinach = new recipe("parmesan", "pasta", "spinach");
-
-
-
-//accessing user input
 
 function generateRecipe(){
 //matching boolean
@@ -186,20 +179,9 @@ var matchesRecipe = false;
     }
 
 }
-/// Starting page will be the 'index', styled after a recipe book page. Recipe images will be stored within an 'images folder'. 
-///Recipes will be stored within objects that will 3 properties each pertaining to a different ingredient category. 
-/// Recipe book will feature recipes that feature one ingredient from 3 different categories, dairy, starch, meat or vegetable
-/// Create a 'matchesRecipe' boolean value, that will return true when 3 ingredients match with the recipe
-/// If matchesRecipe is true, display recipe to user via innerHTML update or display links to recipe pages
-/// Each recipe will feature a photo, come with a set of instructions on preparation.
-/// There will be an option to 'restart your search' (naming WIP), but it will reset the recipe options available to the user. 
-
 </script>
 
 
-
-
 </body>
-
 
 </html>
