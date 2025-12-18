@@ -9,8 +9,10 @@
 <script>
 // global variables
 const suits = ["spades", "hearts", "diamonds", "clubs"];
-const ranks = ["A",2,3,4,5,6,7,8,9,10,"J","Q","K"];
+const ranks = [1,2,3,4,5,6,7,8,9,10,10,10,10];
 var deck = []; 
+var dealerScore = 0;
+var total = 0;
 
 // Validate username
 function validateUserName(username) {
@@ -51,10 +53,10 @@ function Card(suit, rank) {
 Card.prototype.constructCardImage = function() {
     var rankStr = "";
     switch(this.rank) {
-        case "A": rankStr = "ace"; break;
-        case "J": rankStr = "jack"; break;
-        case "Q": rankStr = "queen"; break;
-        case "K": rankStr = "king"; break;
+        case 1: rankStr = "ace"; break;
+        case 10: rankStr = "jack"; break;
+        case 10: rankStr = "queen"; break;
+        case 10: rankStr = "king"; break;
         default: rankStr = this.rank.toString(); break;
     }
     return "images/" + rankStr + "_of_" + this.suit + ".svg";
@@ -102,11 +104,17 @@ function dealInitialCards() {
     deck[0].dealt = true;
     deck[0].isVisible = true;
     dealerCardsHTML += deck[0].show();
+    console.log(deck[0].rank);
+    dealerScore += deck[0].rank;
 
     // Dealer second card face down
     deck[1].dealt = true;
     deck[1].isVisible = false;
     dealerCardsHTML += deck[1].show();
+    console.log(deck[1].rank);
+    dealerScore += deck[1].rank;
+    console.log(dealerScore);
+
 
     document.getElementById("dealerCards").innerHTML = dealerCardsHTML;
 
@@ -115,6 +123,7 @@ function dealInitialCards() {
         deck[i].dealt = true;
         deck[i].isVisible = true;
         playerCardsHTML += deck[i].show();
+        total += deck[i].rank;
     }
     document.getElementById("playerCards").innerHTML = playerCardsHTML;
 }
@@ -132,9 +141,9 @@ async function startGame() {
 
         createDeck();
         shuffleDeck();       // shuffle
-        dealInitialCards();  // deal initial cards
+       // dealInitialCards();  // deal initial cards
     } catch (error) {
-        alert(error);
+        alert(error)
     }
 }
 
@@ -151,7 +160,19 @@ function stand() {
     }
     document.getElementById("dealerCards").innerHTML = dealerHTML;
 
-    alert("Dealer's hidden card revealed! Dealer's turn can be implemented next.");
+    alert("Dealer's hidden card revealed!");
+
+    let finalScore = document.getElementById("score");
+    if (total <= 21 && total > dealerScore) {
+                finalScore.innerHTML = "You won! Your score was " + total + ". Dealer score was " + dealerScore + "." ;
+            } else if (total == dealerScore) {
+                finalScore.innerHTML = "It's a tie! Let's go again. Your score was " + total + ". Dealer score was " + dealerScore + ".";
+            } else {
+                finalScore.innerHTML ="Better luck next time! Your score was " + total + ". Dealer score was " + dealerScore + ".";
+            }
+
+
+
 }
 
 // Hit: draw next card for player
@@ -160,6 +181,7 @@ function hit() {
     for (var i = 0; i < deck.length; i++) {
         if (!deck[i].dealt) {
             nextCard = deck[i];
+            total += nextCard.rank;
             deck[i].dealt = true;
             deck[i].isVisible = true;
             break;
@@ -194,6 +216,8 @@ function returnToForm() {
 
 <div id="gameArea" style="display: none;">
     <h2 id="welcomeMessage"></h2>
+
+    <h3 id = "score"></h3>
 
     <div>
         <h3>Dealer's Cards:</h3>
