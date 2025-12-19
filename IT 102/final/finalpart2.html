@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+  var output = "";
+  var KingCo = ["Seattle", "Bellevue", "Kirkland", "Mercer Island"];
+
+
+  var PierceCo = ["Tacoma", "Sumner", "Puyallup"];
+
+
+  var Metro = KingCo.concat(PierceCo);
+
+  output+=Metro.toString() + "<br>";
+
+
+  Metro.push("Everett");
+  output+=Metro.toString() + "<br>";
+
+  Metro.unshift("Federal Way");
+  output+= Metro.toString() + "<br>";
+
+  Metro.sort();
+  output+=Metro.toString() + "<br>";
+
+
+  Metro.pop();
+  output+=Metro.toString() + "<br>";
+
+Metro.splice(3,2,"Tukwila");
+  output+=Metro.toString() + "<br>";
+
+Metro.sort();
+Metro.reverse();
+  output+=Metro.toString() + "<br>";
+
+function shuffleMetro(Metro) {
+  let i = Metro.length;
+    while (i != 0 ) {
+      let random = Math.floor(Math.random() * i);
+      i--;
+      [Metro[i],Metro[random]] = [Metro[random],Metro[i]]; 
+    }
+}
+shuffleMetro(Metro);
+  output+=Metro.toString() + "<br>";
+
+  document.getElementById("demo").innerHTML = output;
+</script>
+
+</body>
+</html>
